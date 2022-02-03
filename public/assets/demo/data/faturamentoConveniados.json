@@ -1,0 +1,16 @@
+
+{
+    "data": [
+        {"id": "1","code": "f230fh0g3","name": "Clínica Brasil", "price": 100000},
+        {"id": "2","code": "nvklal433","name": "Clínica Novo Hamburgo", "price": 200000},
+        {"id": "3","code": "zz21cz3c1","name": "Clínica Magé", "price": 105000},
+        {"id": "4","code": "244wgerg2","name": "Clínica Rio de Janeiro", "price": 174000},
+        {"id": "5","code": "h456wer53","name": "Clínica São Paulo", "price": 130000},
+        {"id": "6","code": "av2231fwg","name": "Hospital São José","price": 1501500},
+        {"id": "7","code": "bib36pfvm","name": "Hospital Santa Teresa","price": 1665000},
+        {"id": "8","code": "mbvjkgip5","name": "Hospital São Vicente de Paulo", "price": 2293000},
+        {"id": "9","code": "vbb124btr","name": "Hopital Pasteur", "price": 2380000},
+        {"id": "10","code": "cm230f032","name": "Clínica Minas Gerais", "price": 167000}
+    ]
+}
+    
