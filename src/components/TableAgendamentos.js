@@ -41,6 +41,7 @@ export const TableAgendamentos = () => {
                           emptyMessage="Agendamentos Não encontrados.">
                         <Column header="Identificador" field="id"  filter filterPlaceholder="Filtrar por Identificador" style={{ minWidth: '12rem' }} />
                         <Column header="Data" field="data"  filter filterPlaceholder="Filtrar por Data" style={{ minWidth: '12rem' }} />    
+                        <Column header="Procedimento" field="procedimento"  />  
                         <Column header="Associado" field="nomeAssociado"  filter filterPlaceholder="Filtrar por Associado" style={{ minWidth: '12rem' }} />
                         <Column header="Prestador" field="nomePrestador"  filterField="cpf" style={{ minWidth: '12rem' }}  filter filterPlaceholder="Filtrar por Prestador" />
                         <Column header="Conveniado" field="nomeConveniado"  filterField="cpf" style={{ minWidth: '12rem' }}  filter filterPlaceholder="Filtrar por Conveniado" />                    
