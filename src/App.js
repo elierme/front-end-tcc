@@ -14,6 +14,7 @@ import { TableAgendamentos } from './components/TableAgendamentos';
 import { TableAtendimentos } from './components/TableAtendimentos';
 import { TablePrestadores } from './components/TablePrestadores';
 import { TableConveniados } from './components/TableConveniados';
+import { RelatorioFinanceiro } from './components/RelatorioFinanceiro';
 
 import PrimeReact from 'primereact/api';
 import { Tooltip } from 'primereact/tooltip';
@@ -41,7 +42,7 @@ const AMPLIFY_CONFIG = {
         endpoints: [
             {
                 name: "api",
-                endpoint: "https://4t5gqrswmg.execute-api.us-west-2.amazonaws.com/dev",
+                endpoint: "https://t5xkeey356.execute-api.us-west-2.amazonaws.com/homo",
                 custom_header: async () => {
                   // With Cognito User Pools use this:
                   return { Authorization: (await Auth.currentSession()).idToken.jwtToken }
@@ -217,38 +218,11 @@ const App = () => {
             ]
         },
         {
-            label: 'Gestão Estratégica', icon: 'pi pi-fw pi-search',
+            label: 'Relatórios',
             items: [
-                {
-                    label: 'Indicadores Individuais',
-                    items: [
-                        {
-                            label: 'Projetos', icon: 'pi pi-fw pi-search', to: '/indicadores-individuais-projetos',
-                        },
-                        {
-                            label: 'Produtos', icon: 'pi pi-fw pi-search', to: '/indicadores-individuais-produtos',
-                        },
-                        {
-                            label: 'Serviços', icon: 'pi pi-fw pi-search', to: '/indicadores-individuais-servicos',
-                        }
-                    ]
-                },
-                {
-                    label: 'Indicadores Globais',
-                    items: [
-                        {
-                            label: 'Projetos', icon: 'pi pi-fw pi-search', to: '/indicadores-globais-projetos',
-                        },
-                        {
-                            label: 'Produtos', icon: 'pi pi-fw pi-search', to: '/indicadores-globais-produtos',
-                        },
-                        {
-                            label: 'Serviços', icon: 'pi pi-fw pi-search', to: '/indicadores-globais-servicos',
-                        }
-                    ]
-                }
+                { label: 'Financeiro',  icon: 'pi pi-fw pi-search', to: '/RelatorioFinanceiro',},
             ]
-        },    
+        },
         {
             label: 'Ciência de Dados', icon: 'pi pi-fw pi-clone',
             items: [
@@ -304,6 +278,7 @@ const App = () => {
                     <Route path="/atendimentos" component={TableAtendimentos} />
                     <Route path="/conveniados" component={TableConveniados} />
                     <Route path="/prestadores" component={TablePrestadores} />
+                    <Route path="/RelatorioFinanceiro" component={RelatorioFinanceiro} />                    
                 </div>
 
                 <AppFooter layoutColorMode={layoutColorMode} />

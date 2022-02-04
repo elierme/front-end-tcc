@@ -1,13 +1,8 @@
 {
-    "name": "sakai-react",
-    "version": "7.0.1",
+    "name": "front-end",
+    "version": "1.0.1",
     "homepage": ".",
     "private": false,
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/primefaces/sakai-react.git"
-    },
-    "license": "MIT",
     "dependencies": {
         "@aws-amplify/ui-react": "^1.2.26",
         "@fullcalendar/core": "^5.7.2",
@@ -29,6 +24,7 @@
         "react-router-dom": "^5.2.0",
         "react-scripts": "3.4.1",
         "react-transition-group": "^4.4.1",
+        "react-webdatarocks": "^1.4.4",
         "sass": "^1.32.8"
     },
     "scripts": {
@@ -37,7 +33,6 @@
         "test": "react-scripts test",
         "eject": "react-scripts eject",
         "deploy": "aws s3 sync build/ s3://gestao-integral-de-saude --acl public-read"
-        
     },
     "eslintConfig": {
         "extends": [

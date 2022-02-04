@@ -44,6 +44,7 @@ export const TableAgendamentos = () => {
                         <Column header="Associado" field="nomeAssociado"  filter filterPlaceholder="Filtrar por Associado" style={{ minWidth: '12rem' }} />
                         <Column header="Prestador" field="nomePrestador"  filterField="cpf" style={{ minWidth: '12rem' }}  filter filterPlaceholder="Filtrar por Prestador" />
                         <Column header="Conveniado" field="nomeConveniado"  filterField="cpf" style={{ minWidth: '12rem' }}  filter filterPlaceholder="Filtrar por Conveniado" />                    
+                        <Column header="Plano" field="planoName"   />
                     </DataTable>
                 </div>
             </div>
