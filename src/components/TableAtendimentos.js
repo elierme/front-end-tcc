@@ -40,7 +40,7 @@ export const TableAtendimentos = () => {
                           emptyMessage="Atendimentos Não encontrados.">
                               <Column header="Identificador" field="id"  filter filterPlaceholder="Filtrar por Identificador" style={{ minWidth: '12rem' }} />
                         <Column header="Data" field="data"  filter filterPlaceholder="Filtrar por Data" style={{ minWidth: '12rem' }} />  
-                        <Column header="Procedimento" field="procedimento"   />  
+                        <Column header="Procedimento" field="procedimentoName"   />  
                         <Column header="Associado" field="nameAssociado"   />
                         <Column header="Prestador" field="namePrestador"   />
                         <Column header="Conveniado" field="nameConveniado"   />
