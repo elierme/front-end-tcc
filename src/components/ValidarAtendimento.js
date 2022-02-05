@@ -54,11 +54,11 @@ export const ValidarAtendimento = () => {
             // Add your code here
             console.log(response.data)
 
-            alert("Sucesso ao validar o atendimento!");
+            alert("Sucesso ao validar o token de atendimento!");
 
         }).catch(error => {
             console.log(error.response)
-            alert("Não foi possivel validar o atendimento!");
+            alert("Não foi possivel validar o token de atendimento!");
         }).finally(()=>{
         })
 
@@ -71,7 +71,7 @@ export const ValidarAtendimento = () => {
             <div className="col-12">
                 <div className="card">
 
-                    <Panel  header="Confirme aqui seu atendimento">
+                    <Panel  header="Valide aqui o token de atendimento">
                         <InputText id="in"  
                          value={token}
                         onChange={e => setToken(e.target.value )} />

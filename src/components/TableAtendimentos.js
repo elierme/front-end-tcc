@@ -34,6 +34,10 @@ export const TableAtendimentos = () => {
         return value.toLocaleString('en-US', { style: 'currency', currency: 'BRL' });
     };
 
+    const formatConfirmacao = (value) => {
+        return value === true? "Confirmado" : "Não Confirmado" ;
+    };
+
     return (
         <div className="grid table-demo">
             <div className="col-12">
@@ -42,8 +46,9 @@ export const TableAtendimentos = () => {
                     <DataTable value={atendimentos} loading={loading} paginator className="p-datatable-gridlines" showGridlines rows={10}
                         dataKey="id" filterDisplay="menu" responsiveLayout="scroll"
                           emptyMessage="Atendimentos Não encontrados.">
-                              <Column header="Identificador" field="id"  filter filterPlaceholder="Filtrar por Identificador" style={{ minWidth: '12rem' }} />
-                        <Column header="Data" field="data"  filter filterPlaceholder="Filtrar por Data" style={{ minWidth: '12rem' }} />  
+                        <Column header="Identificador" field="id"  filter filterPlaceholder="Filtrar por Identificador" style={{ minWidth: '12rem' }} />
+                        <Column header="Data" field="data"  filter filterPlaceholder="Filtrar por Data" style={{ minWidth: '12rem' }} /> 
+                        <Column header="Token" field="confirmado"  body={( data ) => formatConfirmacao(data.confirmado)}   />  
                         <Column header="Procedimento" field="procedimentoName"   />  
                         <Column header="Associado" field="nameAssociado"   />
                         <Column header="Prestador" field="namePrestador"   />
