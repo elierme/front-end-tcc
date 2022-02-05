@@ -6,20 +6,11 @@ import { Panel } from 'primereact/panel';
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 import { Dialog } from 'primereact/dialog';
-import axios from 'axios';
-
-import 'primereact/resources/primereact.css';
-import 'primeicons/primeicons.css';
-import 'primeflex/primeflex.css';
-import 'prismjs/themes/prism-coy.css';
-import './assets/demo/flags/flags.css';
-import './assets/demo/Demos.scss';
-import './assets/layout/layout.scss';
-import './App.scss';
+import {API} from "aws-amplify";
 
 
 
-const Validation = () => {
+export const ValidarAtendimento = () => {
 
 
     PrimeReact.ripple = true;
@@ -28,10 +19,7 @@ const Validation = () => {
     const [latitude, setLatitude ] = useState(2321545456);
     const [longitude, setLongitude] = useState(6451244242);
     const [token, setToken] = useState();
-    const [visible, setVisible] = useState(false);
-    const [mensagem, setMensagem] = useState();
     
- 
     useEffect(() => {
     navigator.geolocation.getCurrentPosition(
         position => {
@@ -55,25 +43,29 @@ const Validation = () => {
 
     const ValidarToken = () => {
         const request = { latitude: latitude, longitude: longitude };
+    
 
-        const instance = axios.create({
-            baseURL:'https://t5xkeey356.execute-api.us-west-2.amazonaws.com/homo/tokens/',
-            headers:{
-                'Content-Type':'application/json',
-                            'x-api-key':`fwuc86s27o7fnCNLOZH6L7GjmvowZyRE7yYlmdik`,
-                            'Accept': "application/json"
-                }
-            })
+        let apiName = 'api';
+        let myInit = { 
+            headers: { }, 
+            body: request,
+            response: true, 
+        }
+        API.put(apiName, '/tokens/'+token, myInit).then(response => {
+            // Add your code here
+            console.log(response.data)
 
-        return instance.put(token,request)
-        .then(res => setMensagem(res.data));
+            alert("Sucesso ao ativar token");
+
+        }).catch(error => {
+            console.log(error.response)
+            alert("Não foi possivel ativar token");
+        }).finally(()=>{
+        })
+
     }
 
-    const footer  = () =>  (
-        <div>
-            <Button label="Ok" icon="pi pi-check" onClick={setVisible(false)} />
-        </div>
-    );
+   
     
     const myIcon = () =>  (
         <button className="p-dialog-titlebar-icon p-link">
@@ -94,10 +86,6 @@ const Validation = () => {
                         <span>&nbsp;&nbsp;</span>
                         <Button label="Validar"  icon="pi pi-check" className="p-button-success mr-2" onClick={ValidarToken} />
                     </Panel>
-
-                    <Dialog header="Header Text" footer={footer} icons={myIcon} visible={visible} style={{width: '50vw'}} modal>
-                        {mensagem}
-                    </Dialog>
                 </div>
             </div>
         </div>
@@ -105,4 +93,4 @@ const Validation = () => {
 
 }
 
-export default Validation
+export default ValidarAtendimento

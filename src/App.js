@@ -15,6 +15,8 @@ import { TableAtendimentos } from './components/TableAtendimentos';
 import { TablePrestadores } from './components/TablePrestadores';
 import { TableConveniados } from './components/TableConveniados';
 import { RelatorioFinanceiro } from './components/RelatorioFinanceiro';
+import { ValidarAtendimento } from './components/ValidarAtendimento';
+
 
 import PrimeReact from 'primereact/api';
 import { Tooltip } from 'primereact/tooltip';
@@ -215,9 +217,15 @@ const App = () => {
             ]
         },
         {
+            label: 'Serviços ao Colaborador',
+            items: [
+                { label: 'Validar Tokens',  icon: 'pi pi-fw pi-search', to: '/validarAtendimento',},
+            ]
+        },
+        {
             label: 'Relatórios',
             items: [
-                { label: 'Financeiro',  icon: 'pi pi-fw pi-search', to: '/RelatorioFinanceiro',},
+                { label: 'Financeiro',  icon: 'pi pi-fw pi-search', to: '/relatorioFinanceiro',},
             ]
         },
         {
@@ -276,7 +284,8 @@ const App = () => {
                     <Route path="/atendimentos" component={TableAtendimentos} />
                     <Route path="/conveniados" component={TableConveniados} />
                     <Route path="/prestadores" component={TablePrestadores} />
-                    <Route path="/RelatorioFinanceiro" component={RelatorioFinanceiro} />                    
+                    <Route path="/relatorioFinanceiro" component={RelatorioFinanceiro} /> 
+                    <Route path="/validarAtendimento" component={ValidarAtendimento} />                  
                 </div>
 
                 <AppFooter layoutColorMode={layoutColorMode} />
