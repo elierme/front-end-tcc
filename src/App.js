@@ -52,9 +52,6 @@ const AMPLIFY_CONFIG = {
     }
   };
 
-
-  
-
 Amplify.configure(AMPLIFY_CONFIG);
 
 const dict = {
@@ -258,7 +255,8 @@ const App = () => {
 
     return (
 
-        <AmplifyAuthenticator>
+
+        <AmplifyAuthenticator >
 
         <div className={wrapperClass} onClick={onWrapperClick}>
             <Tooltip ref={copyTooltipRef} target=".block-action-copy" position="bottom" content="Copied to clipboard" event="focus" />
