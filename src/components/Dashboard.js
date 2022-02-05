@@ -27,7 +27,7 @@ export const Dashboard = (props) => {
         datasets: [
             {
                 label: 'Agendamentos',
-                data: atendimentos,
+                data: agendamentos,
                 fill: false,
                 backgroundColor: '#2f4860',
                 borderColor: '#2f4860',
@@ -35,7 +35,7 @@ export const Dashboard = (props) => {
             },
             {
                 label: 'Atendiemntos',
-                data: agendamentos,
+                data: atendimentos,
                 fill: false,
                 backgroundColor: '#00bb7e',
                 borderColor: '#00bb7e',

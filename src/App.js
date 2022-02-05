@@ -45,6 +45,9 @@ const AMPLIFY_CONFIG = {
         endpoints: [
             {
                 name: "api",
+                //https://weowgzv532.execute-api.us-west-2.amazonaws.com/prod
+                //https://t5xkeey356.execute-api.us-west-2.amazonaws.com/homo
+
                 endpoint: "https://t5xkeey356.execute-api.us-west-2.amazonaws.com/homo",
                 custom_header: async () => {
                   // With Cognito User Pools use this:
