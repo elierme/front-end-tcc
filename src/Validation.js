@@ -1,11 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
-import classNames from 'classnames';
-import { Route, useLocation } from 'react-router-dom';
-import { CSSTransition } from 'react-transition-group';
+import React, { useState, useEffect} from 'react';
 
 
 import PrimeReact from 'primereact/api';
-import { Tooltip } from 'primereact/tooltip';
 import { Panel } from 'primereact/panel';
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
@@ -25,8 +21,6 @@ import './App.scss';
 
 const Validation = () => {
 
-  
-    const location = useLocation();
 
     PrimeReact.ripple = true;
 
