@@ -5,7 +5,6 @@ import PrimeReact from 'primereact/api';
 import { Panel } from 'primereact/panel';
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
-import { Dialog } from 'primereact/dialog';
 import {API} from "aws-amplify";
 
 
@@ -65,13 +64,6 @@ export const ValidarAtendimento = () => {
 
     }
 
-   
-    
-    const myIcon = () =>  (
-        <button className="p-dialog-titlebar-icon p-link">
-            <span className="pi pi-search"></span>
-        </button>
-    )
 
     return (
         
