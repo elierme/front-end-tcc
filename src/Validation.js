@@ -21,30 +21,6 @@ import './assets/demo/Demos.scss';
 import './assets/layout/layout.scss';
 import './App.scss';
 
-import {Amplify, Auth, I18n} from "aws-amplify";
-
-
-const AMPLIFY_CONFIG = {
-    Auth: {
-      "region": "us-west-2",
-      "userPoolId": "us-west-2_LpIIDHnmd",
-      "userPoolWebClientId": "43o7n9uedn6nttmem68qe1iaf9",
-    },
-    API: {
-        endpoints: [
-            {
-                name: "api-public",
-                endpoint: "fwuc86s27o7fnCNLOZH6L7GjmvowZyRE7yYlmdik",
-                custom_header: async () => {
-                  // With Cognito User Pools use this:
-                  return { "x-api-key": ""}
-                }
-            }
-        ]
-    }
-  };
-
-Amplify.configure(AMPLIFY_CONFIG);
 
 
 const Validation = () => {
@@ -61,7 +37,6 @@ const Validation = () => {
     const [visible, setVisible] = useState(false);
     const [mensagem, setMensagem] = useState();
     
-
  
     useEffect(() => {
     navigator.geolocation.getCurrentPosition(

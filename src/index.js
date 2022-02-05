@@ -11,8 +11,9 @@ import Validation from './Validation';
 ReactDOM.render(
     <BrowserRouter>
         <Switch>
-            <Route path="/" exact={true} component={App} />
-            <Route path="/validation" component={Validation} />
+            
+            <Route path="/validation" exact={true}  component={Validation} />
+            <Route path="/" component={App} />
         </Switch>
     </BrowserRouter>,
     document.getElementById('root')

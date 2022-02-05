@@ -30,6 +30,10 @@ export const TableAtendimentos = () => {
 
     }, []); 
 
+    const formatCurrency = (value) => {
+        return value.toLocaleString('en-US', { style: 'currency', currency: 'BRL' });
+    };
+
     return (
         <div className="grid table-demo">
             <div className="col-12">
@@ -45,7 +49,7 @@ export const TableAtendimentos = () => {
                         <Column header="Prestador" field="namePrestador"   />
                         <Column header="Conveniado" field="nameConveniado"   />
                         <Column header="Plano" field="planoName"   />
-                        <Column header="Valor" field="valor"   />
+                        <Column header="Valor" field="valor"   body={( data ) => formatCurrency(data.valor)}/>
                     </DataTable>
                 </div>
             </div>

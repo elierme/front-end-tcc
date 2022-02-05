@@ -24,11 +24,11 @@ export const RelatorioFinanceiro = () => {
 
             var result = [];
             response.data.reduce(function(res, value) {
-            if (!res[value.nameConveniado+value.procedimento]) {
-                res[value.nameConveniado+value.procedimento] = { nameConveniado: value.nameConveniado, procedimento: value.procedimento, valor: 0 };
-                result.push(res[value.nameConveniado+value.procedimento])
+            if (!res[value.nameConveniado+value.procedimentoName]) {
+                res[value.nameConveniado+value.procedimentoName] = { nameConveniado: value.nameConveniado, procedimentoName: value.procedimentoName, valor: 0 };
+                result.push(res[value.nameConveniado+value.procedimentoName])
             }
-            res[value.nameConveniado].valor += value.valor;
+            res[value.nameConveniado+value.procedimentoName].valor += value.valor;
             return res;
             }, {});
 
@@ -54,7 +54,7 @@ export const RelatorioFinanceiro = () => {
                         dataKey="id" filterDisplay="menu" responsiveLayout="scroll"
                           emptyMessage="Atendimentos Não encontrados.">
                         <Column header="Conveniado" field="nameConveniado"   />
-                        <Column header="Procedimento" field="procedimento"  />         
+                        <Column header="Procedimento" field="procedimentoName"  />         
                         <Column header="Valor" field="valor" body={( data ) => formatCurrency(data.valor)}   />
                     </DataTable>
                 </div>

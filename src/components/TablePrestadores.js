@@ -48,8 +48,7 @@ export const TablePrestadores = () => {
                         dataKey="id" filterDisplay="menu" responsiveLayout="scroll"
                           emptyMessage="Prestadores Não encontrados.">
                         <Column header="Identificador" field="id"  filter filterPlaceholder="Filtrar por Identificador" style={{ minWidth: '12rem' }} />
-                        <Column header="Nome" field="nome"  filter filterPlaceholder="Filtrar por Nome" style={{ minWidth: '12rem' }} />
-                        <Column header="Procedimento" field="nameConveniado"  />                          
+                        <Column header="Nome" field="nome"  filter filterPlaceholder="Filtrar por Nome" style={{ minWidth: '12rem' }} />                       
                         <Column header="CPF" field="cpf"  filterField="cpf" style={{ minWidth: '12rem' }}  filter filterPlaceholder="Filtrar por CPF"
                             filterClear={filterClearTemplate} filterApply={filterApplyTemplate} />
                          <Column header="RG" field="rg"  filter filterPlaceholder="Filtrar por RG" style={{ minWidth: '12rem' }} />    
