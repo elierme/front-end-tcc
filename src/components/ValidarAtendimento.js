@@ -54,11 +54,11 @@ export const ValidarAtendimento = () => {
             // Add your code here
             console.log(response.data)
 
-            alert("Sucesso ao ativar token");
+            alert("Sucesso ao validar o atendimento!");
 
         }).catch(error => {
             console.log(error.response)
-            alert("Não foi possivel ativar token");
+            alert("Não foi possivel validar o atendimento!");
         }).finally(()=>{
         })
 

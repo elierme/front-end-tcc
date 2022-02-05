@@ -16,6 +16,7 @@ import { TablePrestadores } from './components/TablePrestadores';
 import { TableConveniados } from './components/TableConveniados';
 import { RelatorioFinanceiro } from './components/RelatorioFinanceiro';
 import { ValidarAtendimento } from './components/ValidarAtendimento';
+import { Home } from './components/Home';
 
 
 import PrimeReact from 'primereact/api';
@@ -85,6 +86,7 @@ const App = () => {
     const [overlayMenuActive, setOverlayMenuActive] = useState(false);
     const [mobileMenuActive, setMobileMenuActive] = useState(false);
     const [mobileTopbarMenuActive, setMobileTopbarMenuActive] = useState(false);
+    const [username, setUsername] = useState();
     const copyTooltipRef = useRef();
     const location = useLocation();
 
@@ -95,12 +97,21 @@ const App = () => {
 
 
     useEffect(() => {
+       Auth.currentSession().then(function(result) {
+        
+        setUsername(result.accessToken.payload.username);
+      });
+     
+    }, []);
+
+    useEffect(() => {
         if (mobileMenuActive) {
             addClass(document.body, "body-overflow-hidden");
         } else {
             removeClass(document.body, "body-overflow-hidden");
         }
     }, [mobileMenuActive]);
+    
 
     useEffect(() => {
         copyTooltipRef && copyTooltipRef.current && copyTooltipRef.current.updateTargetEvents();
@@ -198,7 +209,13 @@ const App = () => {
         {
             label: 'Home',
             items: [{
-                label: 'Dashboard', icon: 'pi pi-fw pi-home', to: '/'
+                label: 'Home', icon: 'pi pi-fw pi-home', to: '/'
+            }]
+        },
+        {
+            label: 'Indicadores',
+            items: [{
+                label: 'Dashboard', icon: 'pi pi-fw pi-home', to: '/dashboard'
             }]
         },
         {
@@ -227,14 +244,25 @@ const App = () => {
             items: [
                 { label: 'Financeiro',  icon: 'pi pi-fw pi-search', to: '/relatorioFinanceiro',},
             ]
+        }
+    ];
+
+
+    const menuOutros = [
+        {
+            label: 'Home',
+            items: [{
+                label: 'Home', icon: 'pi pi-fw pi-home', to: '/'
+            }]
         },
         {
-            label: 'Ciência de Dados', icon: 'pi pi-fw pi-clone',
+            label: 'Serviços ao Colaborador',
             items: [
-                { label: 'Big data', icon: 'pi pi-fw pi-user-edit', to: '/' },
+                { label: 'Validar Tokens',  icon: 'pi pi-fw pi-search', to: '/validarAtendimento',},
             ]
         }
     ];
+
 
     const addClass = (element, className) => {
         if (element.classList)
@@ -273,12 +301,13 @@ const App = () => {
                 mobileTopbarMenuActive={mobileTopbarMenuActive} onMobileTopbarMenuClick={onMobileTopbarMenuClick} onMobileSubTopbarMenuClick={onMobileSubTopbarMenuClick} />
 
             <div className="layout-sidebar" onClick={onSidebarClick}>
-                <AppMenu model={menu} onMenuItemClick={onMenuItemClick} layoutColorMode={layoutColorMode} />
+                <AppMenu model={ (username=== 'superuser')? menu : menuOutros }  onMenuItemClick={onMenuItemClick} layoutColorMode={layoutColorMode} />
             </div>
 
             <div className="layout-main-container">
                 <div className="layout-main">
-                    <Route path="/" exact render={() => <Dashboard colorMode={layoutColorMode} />} />
+                    <Route path="/"exact render={() => <Home colorMode={layoutColorMode} />} />
+                    <Route path="/dashboard"component={Dashboard}  />
                     <Route path="/associados" component={TableAssociados} />
                     <Route path="/agendamentos" component={TableAgendamentos} />
                     <Route path="/atendimentos" component={TableAtendimentos} />
