@@ -16,7 +16,6 @@ import { TablePrestadores } from './components/TablePrestadores';
 import { TableConveniados } from './components/TableConveniados';
 import { RelatorioFinanceiro } from './components/RelatorioFinanceiro';
 import { ValidarAtendimento } from './components/ValidarAtendimento';
-import { Home } from './components/Home';
 
 
 import PrimeReact from 'primereact/api';
@@ -48,7 +47,7 @@ const AMPLIFY_CONFIG = {
                 //https://weowgzv532.execute-api.us-west-2.amazonaws.com/prod
                 //https://t5xkeey356.execute-api.us-west-2.amazonaws.com/homo
 
-                endpoint: "https://t5xkeey356.execute-api.us-west-2.amazonaws.com/homo",
+                endpoint: "https://weowgzv532.execute-api.us-west-2.amazonaws.com/prod",
                 custom_header: async () => {
                   // With Cognito User Pools use this:
                   return { Authorization: (await Auth.currentSession()).idToken.jwtToken }
@@ -73,6 +72,7 @@ const dict = {
         'Reset your password': "Redefina sua senha",
         'Back to Sign In': "Voltar para acessar",
         'Send Code': "Enviar Código",
+        'Incorrect username or password.': "Usuário ou senha incorreto!",
     }
 };
 
@@ -89,7 +89,6 @@ const App = () => {
     const [overlayMenuActive, setOverlayMenuActive] = useState(false);
     const [mobileMenuActive, setMobileMenuActive] = useState(false);
     const [mobileTopbarMenuActive, setMobileTopbarMenuActive] = useState(false);
-    const [username, setUsername] = useState();
     const copyTooltipRef = useRef();
     const location = useLocation();
 
@@ -98,14 +97,6 @@ const App = () => {
     let menuClick = false;
     let mobileTopbarMenuClick = false;
 
-
-    useEffect(() => {
-       Auth.currentSession().then(function(result) {
-        
-        setUsername(result.accessToken.payload.username);
-      });
-     
-    }, []);
 
     useEffect(() => {
         if (mobileMenuActive) {
@@ -210,15 +201,9 @@ const App = () => {
 
     const menu = [
         {
-            label: 'Home',
-            items: [{
-                label: 'Home', icon: 'pi pi-fw pi-home', to: '/'
-            }]
-        },
-        {
             label: 'Indicadores',
             items: [{
-                label: 'Dashboard', icon: 'pi pi-fw pi-home', to: '/dashboard'
+                label: 'Dashboard', icon: 'pi pi-fw pi-home', to: '/'
             }]
         },
         {
@@ -250,21 +235,6 @@ const App = () => {
         }
     ];
 
-
-    const menuOutros = [
-        {
-            label: 'Home',
-            items: [{
-                label: 'Home', icon: 'pi pi-fw pi-home', to: '/'
-            }]
-        },
-        {
-            label: 'Serviços ao Colaborador',
-            items: [
-                { label: 'Validar Tokens',  icon: 'pi pi-fw pi-search', to: '/validarAtendimento',},
-            ]
-        }
-    ];
 
 
     const addClass = (element, className) => {
@@ -304,13 +274,12 @@ const App = () => {
                 mobileTopbarMenuActive={mobileTopbarMenuActive} onMobileTopbarMenuClick={onMobileTopbarMenuClick} onMobileSubTopbarMenuClick={onMobileSubTopbarMenuClick} />
 
             <div className="layout-sidebar" onClick={onSidebarClick}>
-                <AppMenu model={ (username=== 'superuser')? menu : menuOutros }  onMenuItemClick={onMenuItemClick} layoutColorMode={layoutColorMode} />
+                <AppMenu model={ menu }  onMenuItemClick={onMenuItemClick} layoutColorMode={layoutColorMode} />
             </div>
 
             <div className="layout-main-container">
                 <div className="layout-main">
-                    <Route path="/"exact render={() => <Home colorMode={layoutColorMode} />} />
-                    <Route path="/dashboard"component={Dashboard}  />
+                    <Route path="/" exact render={() => <Dashboard colorMode={layoutColorMode} />} />
                     <Route path="/associados" component={TableAssociados} />
                     <Route path="/agendamentos" component={TableAgendamentos} />
                     <Route path="/atendimentos" component={TableAtendimentos} />
